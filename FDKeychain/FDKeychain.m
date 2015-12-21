@@ -286,6 +286,7 @@ NSString * const FDKeychainErrorDomain = @"com.1414degrees.keychain";
 	inAccessGroup: (NSString *)accessGroup 
 	error: (NSError **)error
 {
+#if !(TARGET_IPHONE_SIMULATOR)
 	// Raise exception if either the key or the service parameter are empty.
 	if ([key length] == 0)
 	{
@@ -299,6 +300,7 @@ NSString * const FDKeychainErrorDomain = @"com.1414degrees.keychain";
 			format: @"%s service argument cannot be empty", 
 				__PRETTY_FUNCTION__];
 	}
+#endif
 	
 	// Assume the delete will succeed.
 	BOOL deleteSuccessful = YES;
